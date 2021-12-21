@@ -7,6 +7,13 @@ class Game_test(unittest.TestCase):
     def setUp(self):
         game = Game("Jacek", "Wojtas")
         self.game = game
+        self.empty_board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]]
 
     def test_check_init_val_player1(self):
         self.assertEqual(self.game.player1_name, "Jacek")
@@ -61,13 +68,10 @@ class Game_test(unittest.TestCase):
                         [1, 0, 0, 0, 0, 0, 0]])
 
     def test_move_string(self):
-        self.assertEqual(self.game.move("1"), [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0]])
+        self.assertEqual(self.game.move("1"), self.empty_board)
+
+    def test_move_array(self):
+        self.assertEqual(self.game.move([]), self.empty_board)
 
     def tearDown(self):
         self.game = None
