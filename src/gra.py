@@ -9,6 +9,7 @@ class Game:
         self.separator = 0
         self.board = [[self.separator for i in range(7)] for j in range(6)]
         self.next = self.player1
+        self.moves = []
 
     def print_board(self):
         for col in self.board:
@@ -39,3 +40,16 @@ class Game:
             print("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(col + 1))
 
         return self.board
+
+    def move_back(self):
+        if not self.moves:
+            print("Nie można cofnąć ruchu")
+            return self.board
+        else:
+            row = self.moves.pop()
+            for i in range(5, -1, -1):
+                if self.board[i][row] != self.separator:
+                    self.board[i][row] = self.separator
+                    self.change_player()
+                    return self.board
+            return self.board
