@@ -42,5 +42,23 @@ class Game_test(unittest.TestCase):
                         [0, 0, 0, 0, 0, 0, 0],
                         [2, 1, 0, 0, 0, 0, 0]])
 
+    def test_move_full(self):
+        self.game.move(1)   # p1
+        self.game.move(1)   # p2
+
+        self.game.move(1)  # p1
+        self.game.move(1)  # p2
+
+        self.game.move(1)  # p1
+        self.game.move(1)  # p2
+
+        self.assertEqual(self.game.move(1), [
+                        [2, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0],
+                        [2, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0],
+                        [2, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0]])
+
     def tearDown(self):
         self.game = None

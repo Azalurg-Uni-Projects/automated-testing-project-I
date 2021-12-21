@@ -30,6 +30,6 @@ class Game:
                     self.change_player()
                     break
         else:
-            print("Nie mogę wykonać ruchu, kolumna {} pełna".format(row + 1))
+            print("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(row + 1))
 
         return self.board
