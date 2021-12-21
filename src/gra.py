@@ -21,6 +21,15 @@ class Game:
         else:
             self.next = self.player1
 
+    def move(self, row):
+        row -= 1
+        if self.board[0][row] == self.separator:
+            for i in range(5, -1, -1):
+                if self.board[i][row] == self.separator:
+                    self.board[i][row] = self.next
+                    self.change_player()
+                    break
+        else:
+            print("Nie mogę wykonać ruchu, kolumna {} pełna".format(row + 1))
 
-gra = Game("Jacek", "Wojtas")
-gra.print_board()
+        return self.board
