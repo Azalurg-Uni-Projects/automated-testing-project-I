@@ -21,21 +21,21 @@ class Game:
         else:
             self.next = self.player1
 
-    def move(self, row):
-        if type(row) is not int:
-            print("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(row)))
+    def move(self, col):
+        if type(col) is not int:
+            print("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(col)))
             return self.board
-        if row not in range(1, 7):
+        if col not in range(1, 8):
             print("!!! ZŁY ZAKRES !!!")
             return self.board
-        row -= 1
-        if self.board[0][row] == self.separator:
+        col -= 1
+        if self.board[0][col] == self.separator:
             for i in range(5, -1, -1):
-                if self.board[i][row] == self.separator:
-                    self.board[i][row] = self.next
+                if self.board[i][col] == self.separator:
+                    self.board[i][col] = self.next
                     self.change_player()
                     break
         else:
-            print("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(row + 1))
+            print("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(col + 1))
 
         return self.board

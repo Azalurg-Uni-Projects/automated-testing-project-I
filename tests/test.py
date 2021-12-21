@@ -40,14 +40,14 @@ class Game_test(unittest.TestCase):
                         [1, 0, 0, 0, 0, 0, 0]])
 
     def test_move2(self):
-        self.game.move(2)
+        self.game.move(7)
         self.assertEqual(self.game.move(1), [
                         [0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0],
                         [0, 0, 0, 0, 0, 0, 0],
-                        [2, 1, 0, 0, 0, 0, 0]])
+                        [2, 0, 0, 0, 0, 0, 1]])
 
     def test_move_full(self):
         self.game.move(1)   # p1
@@ -86,7 +86,7 @@ class Game_test(unittest.TestCase):
         self.assertEqual(self.game.move(0), self.empty_board)
 
     def test_move_wrong_range2(self):
-        self.assertEqual(self.game.move(7), self.empty_board)
+        self.assertEqual(self.game.move(8), self.empty_board)
 
     def tearDown(self):
         self.game = None
