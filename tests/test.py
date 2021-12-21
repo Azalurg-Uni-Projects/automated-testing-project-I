@@ -101,5 +101,8 @@ class Game_test(unittest.TestCase):
 
         self.assertEqual(self.game.board, self.empty_board)
 
+    def test_check_board_not_finished(self):
+        self.assertEqual(self.game.check_board(), False)
+
     def tearDown(self):
         self.game = None
