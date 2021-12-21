@@ -23,5 +23,14 @@ class Game_test(unittest.TestCase):
         self.game.change_player()
         self.assertEqual(self.game.next, 1)
 
+    def test_move1(self):
+        self.assertEqual(self.game.move(1), [
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [0, 0, 0, 0, 0, 0, 0],
+                        [1, 0, 0, 0, 0, 0, 0]])
+
     def tearDown(self):
         self.game = None
