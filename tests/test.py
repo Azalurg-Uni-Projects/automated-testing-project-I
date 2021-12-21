@@ -76,6 +76,9 @@ class Game_test(unittest.TestCase):
     def test_move_dic(self):
         self.assertEqual(self.game.move({}), self.empty_board)
 
+    def test_move_tuple(self):
+        self.assertEqual(self.game.move(()), self.empty_board)
+
     def test_move_none(self):
         self.assertEqual(self.game.move(None), self.empty_board)
 
