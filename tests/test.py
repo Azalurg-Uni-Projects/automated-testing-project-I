@@ -104,5 +104,15 @@ class Game_test(unittest.TestCase):
     def test_check_board_not_finished(self):
         self.assertEqual(self.game.check_board(), False)
 
+    def test_check_board_draw(self):
+        self.game.board = [
+            [1, 2, 1, 2, 1, 2, 2],
+            [1, 2, 1, 2, 1, 2, 1],
+            [2, 1, 2, 1, 2, 1, 2],
+            [2, 1, 2, 1, 2, 1, 2],
+            [1, 2, 1, 2, 1, 2, 1],
+            [1, 2, 1, 2, 1, 2, 1]]
+        self.assertTrue(self.game.check_board())
+
     def tearDown(self):
         self.game = None

@@ -86,6 +86,7 @@ class Game:
         if self.separator not in (
                 self.board[0] or self.board[1] or self.board[2] or self.board[3] or self.board[4] or self.board[5]):
             self.game_end = True
+            return True
 
         return False
 
