@@ -102,7 +102,7 @@ class Game_test(unittest.TestCase):
         self.assertEqual(self.game.board, self.empty_board)
 
     def test_check_board_not_finished(self):
-        self.assertEqual(self.game.check_board(), False)
+        self.assertFalse(self.game.check_board())
 
     def test_check_board_draw(self):
         self.game.board = [
@@ -142,6 +142,16 @@ class Game_test(unittest.TestCase):
             [0, 0, 1, 1, 0, 0, 0],
             [0, 1, 1, 2, 0, 0, 0],
             [1, 2, 2, 2, 2, 0, 0]]
+        self.assertTrue(self.game.check_board())
+
+    def test_check_II_slope(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 2, 1, 0, 0, 0, 0],
+            [0, 2, 2, 1, 0, 0, 0],
+            [1, 2, 1, 2, 1, 0, 0]]
         self.assertTrue(self.game.check_board())
 
 
