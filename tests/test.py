@@ -190,5 +190,16 @@ class Game_test(unittest.TestCase):
 
         self.assertEqual(self.game.winner, "Jacek")
 
+    def test_check_looser_name(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 2, 1, 0, 0, 0, 0],
+            [0, 2, 2, 1, 0, 0, 0],
+            [1, 2, 1, 2, 1, 0, 0]]
+        self.game.check_board()
+
+        self.assertEqual(self.game.looser, "Wojtas")
     def tearDown(self):
         self.game = None
