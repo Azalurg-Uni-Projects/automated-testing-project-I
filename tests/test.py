@@ -92,5 +92,14 @@ class Game_test(unittest.TestCase):
         self.game.move(1)
         self.assertEqual(self.game.move_back(), self.empty_board)
 
+    def test_move_back2(self):
+        self.game.move(1)
+        self.game.move(1)
+
+        self.game.move_back()
+        self.game.move_back()
+
+        self.assertEqual(self.game.board, self.empty_board)
+
     def tearDown(self):
         self.game = None
