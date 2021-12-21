@@ -59,34 +59,28 @@ class Game_test(unittest.TestCase):
         self.game.move(1)  # p1
         self.game.move(1)  # p2
 
-        self.assertEqual(self.game.move(1), [
-                        [2, 0, 0, 0, 0, 0, 0],
-                        [1, 0, 0, 0, 0, 0, 0],
-                        [2, 0, 0, 0, 0, 0, 0],
-                        [1, 0, 0, 0, 0, 0, 0],
-                        [2, 0, 0, 0, 0, 0, 0],
-                        [1, 0, 0, 0, 0, 0, 0]])
+        self.assertRaises(Exception, self.game.move, 1)
 
     def test_move_string(self):
-        self.assertEqual(self.game.move("1"), self.empty_board)
+        self.assertRaises(ValueError, self.game.move, "1")
 
     def test_move_array(self):
-        self.assertEqual(self.game.move([]), self.empty_board)
+        self.assertRaises(ValueError, self.game.move, [])
 
     def test_move_dic(self):
-        self.assertEqual(self.game.move({}), self.empty_board)
+        self.assertRaises(ValueError, self.game.move, {})
 
     def test_move_tuple(self):
-        self.assertEqual(self.game.move(()), self.empty_board)
+        self.assertRaises(ValueError, self.game.move, ())
 
     def test_move_none(self):
-        self.assertEqual(self.game.move(None), self.empty_board)
+        self.assertRaises(ValueError, self.game.move, None)
 
     def test_move_wrong_range1(self):
-        self.assertEqual(self.game.move(0), self.empty_board)
+        self.assertRaises(Exception, self.game.move, 0)
 
     def test_move_wrong_range2(self):
-        self.assertEqual(self.game.move(8), self.empty_board)
+        self.assertRaises(Exception, self.game.move, 8)
 
     def test_move_back1(self):
         self.game.move(1)
@@ -163,7 +157,7 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-        self.assertEqual(self.game.move(1), self.game.board)
+        self.assertRaises(Exception, self.game.move_back)
 
     def test_move_back_after_game_end(self):
         self.game.board = [
@@ -174,7 +168,7 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-        self.assertEqual(self.game.move_back(), self.game.board)
+        self.assertRaises(Exception, self.game.move_back)
 
     def test_check_winner_name(self):
         self.game.board = [

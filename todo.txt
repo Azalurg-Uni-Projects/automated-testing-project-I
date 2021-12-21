@@ -18,7 +18,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 # (6 pkt) Uwzględnienie powyższych wymagań.
 (7 pkt) Przypadki testowe.
 (1 pkt) Użycie różnych asercji przy wykorzystaniu różnych modułów. Co najmniej 9 różnych asercji.
-(2 pkt) Uwzględnienie wyjątków.
+# (2 pkt) Uwzględnienie wyjątków.
 (3 pkt) Zastosowanie biblioteki PyHamcrest oraz assertpy. Stosujemy każdy moduł.
 (1 pkt) Testy przy użyciu modułu PyHamcrest
 (1 pkt) Testy przy użyciu modułu assertpy
@@ -27,7 +27,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 (1 pkt) Napisanie testów za pomocą DocTest
 (2 pkt) Pokrycie kodu. Liczba punktów w zależności od otrzymanego pokrycia.
 (2 pkt) Styl kodu oraz testów.
-(3 pkt) Zastosowanie metodyki TDD.
+# (3 pkt) Zastosowanie metodyki TDD.
 (1 pkt) Zastosowanie testów parametrycznych (poprzez różne rodzaje)
 (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 
