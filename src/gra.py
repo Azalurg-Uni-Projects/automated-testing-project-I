@@ -34,6 +34,7 @@ class Game:
             for i in range(5, -1, -1):
                 if self.board[i][col] == self.separator:
                     self.board[i][col] = self.next
+                    self.moves.append(col)
                     self.change_player()
                     break
         else:
@@ -46,10 +47,10 @@ class Game:
             print("Nie można cofnąć ruchu")
             return self.board
         else:
-            row = self.moves.pop()
+            col = self.moves.pop()
             for i in range(5, -1, -1):
-                if self.board[i][row] != self.separator:
-                    self.board[i][row] = self.separator
+                if self.board[i][col] != self.separator:
+                    self.board[i][col] = self.separator
                     self.change_player()
                     return self.board
             return self.board
