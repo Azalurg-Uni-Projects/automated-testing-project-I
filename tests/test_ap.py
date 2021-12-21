@@ -25,6 +25,9 @@ class Game_assertpy_test(unittest.TestCase):
     def test_instance(self):
         assert_that(self.game).is_instance_of(Game)
 
+    def test_init_board(self):
+        assert_that(self.game.board).is_equal_to(self.empty_board)
+
     def test_iterable(self):
         assert_that(self.game.move(1)).is_iterable()
 
