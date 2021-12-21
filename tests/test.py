@@ -17,5 +17,10 @@ class Game_test(unittest.TestCase):
         self.game.change_player()
         self.assertEqual(self.game.next, 2)
 
+    def test_change_player_success2(self):
+        self.game.change_player()
+        self.game.change_player()
+        self.assertEqual(self.game.next, 1)
+
     def tearDown(self):
         self.game = None
