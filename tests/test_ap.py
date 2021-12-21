@@ -31,5 +31,8 @@ class Game_assertpy_test(unittest.TestCase):
     def test_iterable(self):
         assert_that(self.game.move(1)).is_iterable()
 
+    def test_type_of(self):
+        assert_that(self.game.move(1)).is_type_of(list)
+
     def tearDown(self):
         self.game = None
