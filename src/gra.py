@@ -51,7 +51,7 @@ class Game:
             try:
                 next(reader)
             except:
-                print("File empty")
+                raise Exception("Error")
 
             for row in reader:
                 record = {"player": row[0],
@@ -76,6 +76,7 @@ class Game:
             writer.writeheader()
             for key, value in records.items():
                 writer.writerow(value)
+        return True
 
     def check_board(self):
         # Check horizontal
@@ -149,14 +150,12 @@ class Game:
 
     def move(self, col):
         if self.game_end:
-            print("Koniec gry, wygrał: {}".format(self.winner))
-            return self.board
+            raise Exception("Koniec gry, wygrał: {}".format(self.winner))
         if type(col) is not int:
-            print("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(col)))
-            return self.board
+            raise ValueError("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(col)))
         if col not in range(1, 8):
-            print("!!! ZŁY ZAKRES !!!")
-            return self.board
+            raise Exception("!!! ZŁY ZAKRES !!!")
+
         col -= 1
         if self.board[0][col] == self.separator:
             for i in range(5, -1, -1):
@@ -167,17 +166,16 @@ class Game:
                     self.change_player()
                     break
         else:
-            print("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(col + 1))
+            raise Exception("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(col + 1))
 
         return self.board
 
     def move_back(self):
         if self.game_end:
-            print("Koniec gry, wygrał: {}".format(self.winner))
-            return self.board
+            raise Exception("Koniec gry, wygrał: {}".format(self.winner))
         if not self.moves:
-            print("Nie można cofnąć ruchu")
-            return self.board
+            raise Exception("Nie można cofnąć ruchu")
+
         else:
             col = self.moves.pop()
             for i in range(5, -1, -1):
@@ -185,4 +183,4 @@ class Game:
                     self.board[i][col] = self.separator
                     self.change_player()
                     return self.board
-            return self.board
+            raise Exception("Error")

@@ -163,7 +163,6 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-
         self.assertEqual(self.game.move(1), self.game.board)
 
     def test_move_back_after_game_end(self):
@@ -175,7 +174,6 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-
         self.assertEqual(self.game.move_back(), self.game.board)
 
     def test_check_winner_name(self):
@@ -187,7 +185,6 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-
         self.assertEqual(self.game.winner, "Jacek")
 
     def test_check_looser_name(self):
@@ -199,7 +196,7 @@ class Game_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
         self.game.check_board()
-
         self.assertEqual(self.game.looser, "Wojtas")
+
     def tearDown(self):
         self.game = None
