@@ -114,5 +114,15 @@ class Game_test(unittest.TestCase):
             [1, 2, 1, 2, 1, 2, 1]]
         self.assertTrue(self.game.check_board())
 
+    def test_check_win_horizontal(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [2, 2, 2, 0, 0, 0, 0],
+            [1, 1, 1, 1, 0, 0, 0]]
+        self.assertTrue(self.game.check_board())
+
     def tearDown(self):
         self.game = None
