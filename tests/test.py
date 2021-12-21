@@ -13,5 +13,9 @@ class Game_test(unittest.TestCase):
     def test_check_init_val_player2(self):
         self.assertEqual(self.game.player2_name, "Wojtas")
 
+    def test_change_player_success(self):
+        self.game.change_player()
+        self.assertEqual(self.game.next, 2)
+
     def tearDown(self):
         self.game = None
