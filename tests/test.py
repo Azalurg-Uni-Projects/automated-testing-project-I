@@ -14,6 +14,13 @@ class Game_test(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0]]
+        self.winning_board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 2, 1, 0, 0, 0, 0],
+            [0, 2, 2, 1, 0, 0, 0],
+            [1, 2, 1, 2, 1, 0, 0]]
 
     def test_check_init_val_player1(self):
         self.assertEqual(self.game.player1_name, "Jacek")
@@ -149,46 +156,22 @@ class Game_test(unittest.TestCase):
         self.assertTrue(self.game.check_board())
 
     def test_move_after_game_end(self):
-        self.game.board = [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0],
-            [0, 2, 1, 0, 0, 0, 0],
-            [0, 2, 2, 1, 0, 0, 0],
-            [1, 2, 1, 2, 1, 0, 0]]
+        self.game.board = self.winning_board
         self.game.check_board()
         self.assertRaises(Exception, self.game.move_back)
 
     def test_move_back_after_game_end(self):
-        self.game.board = [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0],
-            [0, 2, 1, 0, 0, 0, 0],
-            [0, 2, 2, 1, 0, 0, 0],
-            [1, 2, 1, 2, 1, 0, 0]]
+        self.game.board = self.winning_board
         self.game.check_board()
         self.assertRaises(Exception, self.game.move_back)
 
     def test_check_winner_name(self):
-        self.game.board = [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0],
-            [0, 2, 1, 0, 0, 0, 0],
-            [0, 2, 2, 1, 0, 0, 0],
-            [1, 2, 1, 2, 1, 0, 0]]
+        self.game.board = self.winning_board
         self.game.check_board()
         self.assertEqual(self.game.winner, "Jacek")
 
     def test_check_looser_name(self):
-        self.game.board = [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0, 0],
-            [0, 2, 1, 0, 0, 0, 0],
-            [0, 2, 2, 1, 0, 0, 0],
-            [1, 2, 1, 2, 1, 0, 0]]
+        self.game.board = self.winning_board
         self.game.check_board()
         self.assertEqual(self.game.looser, "Wojtas")
 

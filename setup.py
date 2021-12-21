@@ -8,7 +8,7 @@ setup(
     author='Patryk Wawrzyniak',
     packages=find_packages(),
     python_requires='>=3.5, <4',
-    install_requires=['nose2'],
+    install_requires=['nose2', 'assertpy'],
     extras_require={
         'test': ['coverage']
     },
