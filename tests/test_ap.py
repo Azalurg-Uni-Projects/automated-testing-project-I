@@ -34,5 +34,10 @@ class Game_assertpy_test(unittest.TestCase):
     def test_type_of(self):
         assert_that(self.game.move(1)).is_type_of(list)
 
+    def test_is_not_none(self):
+        self.game.board = self.winning_board
+        self.game.check_board()
+        assert_that(self.game.winner).is_not_none()
+
     def tearDown(self):
         self.game = None
