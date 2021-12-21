@@ -9,6 +9,11 @@ class Game:
         self.separator = 0
         self.board = [[self.separator for i in range(7)] for j in range(6)]
 
+    def print_board(self):
+        for col in self.board:
+            print(col)
+        print("\n")
+
 
 gra = Game("Jacek", "Wojtas")
-print(gra)
+gra.print_board()
