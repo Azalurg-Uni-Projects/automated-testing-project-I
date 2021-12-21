@@ -22,5 +22,8 @@ class Game_assertpy_test(unittest.TestCase):
             [0, 2, 2, 1, 0, 0, 0],
             [1, 2, 1, 2, 1, 0, 0]]
 
+    def testInstance(self):
+        assert_that(self.game).is_instance_of(Game)
+
     def tearDown(self):
         self.game = None
