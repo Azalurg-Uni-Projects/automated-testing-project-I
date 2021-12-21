@@ -10,6 +10,9 @@ class Game:
         self.board = [[self.separator for i in range(7)] for j in range(6)]
         self.next = self.player1
         self.moves = []
+        self.winner = None
+        self.looser = None
+        self.game_end = False
 
     def print_board(self):
         for col in self.board:
@@ -22,7 +25,72 @@ class Game:
         else:
             self.next = self.player1
 
+    def check_board(self):
+        # Check horizontal
+        for c in range(4):
+            for r in range(6):
+                if self.board[r][c] == self.board[r][c + 1] == self.board[r][c + 2] == self.board[r][c + 3] \
+                        and self.board[r][c] in [self.player1, self.player2]:
+                    if self.board[r][c] == self.player1:
+                        self.winner = self.player1_name
+                        self.looser = self.player2_name
+                    else:
+                        self.winner = self.player2_name
+                        self.looser = self.player2_name
+                    self.game_end = True
+                    return True
+
+        # Check vertical
+        for c in range(7):
+            for r in range(3):
+                if self.board[r][c] == self.board[r + 1][c] == self.board[r + 2][c] == self.board[r + 3][c] \
+                        and self.board[r][c] in [self.player1, self.player2]:
+                    if self.board[r][c] == self.player1:
+                        self.winner = self.player1_name
+                        self.looser = self.player2_name
+                    else:
+                        self.winner = self.player2_name
+                        self.looser = self.player1_name
+                    self.game_end = True
+                    return True
+
+        # Check I slope
+        for c in range(4):
+            for r in range(3):
+                if self.board[r][c] == self.board[r + 1][c + 1] == self.board[r + 2][c + 2] == \
+                        self.board[r + 3][c + 3] and self.board[r][c] in [self.player1, self.player2]:
+                    if self.board[r][c] == self.player1:
+                        self.winner = self.player1_name
+                        self.looser = self.player2_name
+                    else:
+                        self.winner = self.player2_name
+                        self.looser = self.player1_name
+                    self.game_end = True
+                    return True
+
+        # Check II slope
+        for c in range(4):
+            for r in range(3, 6):
+                if self.board[r][c] == self.board[r - 1][c + 1] == self.board[r - 2][c + 2] == \
+                        self.board[r - 3][c + 3] and self.board[r][c] in [self.player1, self.player2]:
+                    if self.board[r][c] == self.player1:
+                        self.winner = self.player1_name
+                        self.looser = self.player2_name
+                    else:
+                        self.winner = self.player2_name
+                        self.looser = self.player1_name
+                    self.game_end = True
+                    return True
+
+        # Draw
+        if self.separator not in (
+                self.board[0] or self.board[1] or self.board[2] or self.board[3] or self.board[4] or self.board[5]):
+            self.game_end = True
+
     def move(self, col):
+        if self.game_end:
+            print("Koniec gry, wygrał: {}".format(self.winner))
+            return self.board
         if type(col) is not int:
             print("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(col)))
             return self.board
@@ -35,6 +103,7 @@ class Game:
                 if self.board[i][col] == self.separator:
                     self.board[i][col] = self.next
                     self.moves.append(col)
+                    self.check_board()
                     self.change_player()
                     break
         else:
@@ -43,6 +112,9 @@ class Game:
         return self.board
 
     def move_back(self):
+        if self.game_end:
+            print("Koniec gry, wygrał: {}".format(self.winner))
+            return self.board
         if not self.moves:
             print("Nie można cofnąć ruchu")
             return self.board
