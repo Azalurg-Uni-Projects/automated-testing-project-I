@@ -5,7 +5,7 @@ from src.gra import Game
 
 class Game_assertpy_test(unittest.TestCase):
     def setUp(self):
-        game = Game("Jacek", "Wojtas")
+        game = Game("assert", "py")
         self.game = game
         self.empty_board = [
             [0, 0, 0, 0, 0, 0, 0],
