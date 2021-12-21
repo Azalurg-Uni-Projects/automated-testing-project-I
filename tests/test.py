@@ -134,6 +134,16 @@ class Game_test(unittest.TestCase):
             [1, 1, 0, 1, 2, 0, 0]]
         self.assertTrue(self.game.check_board())
 
+    def test_check_I_slope(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 1, 1, 0, 0, 0],
+            [0, 1, 1, 2, 0, 0, 0],
+            [1, 2, 2, 2, 2, 0, 0]]
+        self.assertTrue(self.game.check_board())
+
 
     def tearDown(self):
         self.game = None
