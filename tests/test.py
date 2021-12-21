@@ -82,5 +82,8 @@ class Game_test(unittest.TestCase):
     def test_move_none(self):
         self.assertEqual(self.game.move(None), self.empty_board)
 
+    def test_move_wrong_range1(self):
+        self.assertEqual(self.game.move(0), self.empty_board)
+
     def tearDown(self):
         self.game = None

@@ -22,8 +22,11 @@ class Game:
             self.next = self.player1
 
     def move(self, row):
-        if type(row) != 'int':
-            print("!!! BŁĘDNE DANE WEJŚCIOWE {}!!!".format(type(row)))
+        if type(row) is not int:
+            print("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(row)))
+            return self.board
+        if row not in range(1, 7):
+            print("!!! ZŁY ZAKRES !!!")
             return self.board
         row -= 1
         if self.board[0][row] == self.separator:
