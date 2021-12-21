@@ -1,4 +1,7 @@
 # rows = 6 columns = 7
+import os
+import csv
+
 
 class Game:
     def __init__(self, player1_name="player1", player2_name="player2"):
@@ -13,6 +16,7 @@ class Game:
         self.winner = None
         self.looser = None
         self.game_end = False
+        self.path_to_file = "data/results.csv"
 
     def print_board(self):
         for col in self.board:
@@ -24,6 +28,54 @@ class Game:
             self.next = self.player2
         else:
             self.next = self.player1
+
+    def save_result(self):
+        fieldnames = ['player', 'points', "games_played", "win", "lose", "draw"]
+        file_exists = os.path.exists(self.path_to_file)
+        if self.winner is None:
+            records = {
+                self.player1: {"player": self.player1_name, "points": 1, "games_played": 1, "win": 0, "lose": 0,"draw": 1},
+                self.player2: {"player": self.player2_name, "points": 1, "games_played": 1, "win": 0, "lose": 0,"draw": 1}}
+        else:
+            records = {
+                self.winner: {"player": self.winner, "points": 3, "games_played": 1, "win": 1, "lose": 0,"draw": 0},
+                self.looser: {"player": self.looser, "points": 0, "games_played": 1, "win": 0, "lose": 1,"draw": 0}}
+
+        if not file_exists:
+            with open(self.path_to_file, "w", newline="") as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
+                writer.writeheader()
+
+        with open(self.path_to_file, newline="") as csvfile:
+            reader = csv.reader(csvfile, delimiter=";")
+            try:
+                next(reader)
+            except:
+                print("File empty")
+
+            for row in reader:
+                record = {"player": row[0],
+                          "points": int(row[1]),
+                          "games_played": int(row[2]),
+                          "win": int(row[3]),
+                          "lose": int(row[4]),
+                          "draw": int(row[5])}
+
+                # wyszukiwanie czy gracz nie powtarza się w tabeli wyników
+                for key, val in records.items():
+                    if row[0] == key:
+                        record["points"] += int(val["points"])
+                        record["games_played"] += val["games_played"]
+                        record["win"] += val["win"]
+                        record["lose"] += val["lose"]
+                        record["draw"] += val["draw"]
+                records[row[0]] = record
+
+        with open(self.path_to_file, "w", newline="") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
+            writer.writeheader()
+            for key, value in records.items():
+                writer.writerow(value)
 
     def check_board(self):
         # Check horizontal
@@ -38,6 +90,7 @@ class Game:
                         self.winner = self.player2_name
                         self.looser = self.player2_name
                     self.game_end = True
+                    self.save_result()
                     return True
 
         # Check vertical
@@ -52,6 +105,7 @@ class Game:
                         self.winner = self.player2_name
                         self.looser = self.player1_name
                     self.game_end = True
+                    self.save_result()
                     return True
 
         # Check I slope
@@ -66,6 +120,7 @@ class Game:
                         self.winner = self.player2_name
                         self.looser = self.player1_name
                     self.game_end = True
+                    self.save_result()
                     return True
 
         # Check II slope
@@ -80,12 +135,14 @@ class Game:
                         self.winner = self.player2_name
                         self.looser = self.player1_name
                     self.game_end = True
+                    self.save_result()
                     return True
 
         # Draw
         if self.separator not in (
                 self.board[0] or self.board[1] or self.board[2] or self.board[3] or self.board[4] or self.board[5]):
             self.game_end = True
+            self.save_result()
             return True
 
         return False
