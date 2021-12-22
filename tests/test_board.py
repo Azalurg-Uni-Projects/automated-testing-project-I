@@ -52,7 +52,7 @@ class Board_test(unittest.TestCase):
         self.assertRaises(Exception, Board, 10, 3)
 
     def test_check_board_draw(self):
-        self.game.board = [
+        self.board.board = [
             [1, 2, 1, 2, 1, 2, 2],
             [1, 2, 1, 2, 1, 2, 1],
             [2, 1, 2, 1, 2, 1, 2],
@@ -62,7 +62,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[0]).is_true()
 
     def test_check_win_horizontal_player1(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -72,7 +72,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
 
     def test_check_win_horizontal_player2(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -82,7 +82,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player2_color)
 
     def test_check_win_vertical1(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0],
@@ -92,7 +92,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
 
     def test_check_win_vertical2(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 2, 0, 0],
@@ -102,7 +102,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player2_color)
 
     def test_check_I_slope1(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0],
@@ -112,7 +112,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
 
     def test_check_I_slope2(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 2, 0, 0, 0],
@@ -122,7 +122,7 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player2_color)
 
     def test_check_II_slope1(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [1, 0, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0, 0],
@@ -132,14 +132,14 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
 
     def test_check_II_slope2(self):
-        self.game.board = [
+        self.board.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 2, 0, 0, 0, 0, 0],
             [0, 0, 2, 0, 0, 0, 0],
             [0, 0, 0, 2, 0, 0, 0],
             [1, 1, 1, 0, 2, 0, 1]]
-        assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
+        assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player2_color)
 
     def tearDown(self):
-        self.game = None
+        self.board = None
