@@ -108,7 +108,7 @@ class Board_test(unittest.TestCase):
             [0, 0, 0, 1, 0, 0, 0],
             [0, 0, 1, 1, 0, 0, 0],
             [0, 1, 1, 2, 0, 0, 0],
-            [1, 2, 2, 2, 2, 0, 0]]
+            [1, 2, 2, 2, 0, 0, 0]]
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player1_color)
 
     def test_check_I_slope2(self):
