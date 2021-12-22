@@ -18,11 +18,6 @@ class Game:
         self.game_end = False
         self.path_to_file = "data/results.csv"
 
-    def print_board(self):
-        for col in self.board:
-            print(col)
-        print("\n")
-
     def change_player(self):
         if self.next == self.player1:
             self.next = self.player2
