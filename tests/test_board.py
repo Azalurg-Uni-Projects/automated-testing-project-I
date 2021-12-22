@@ -141,6 +141,16 @@ class Board_test(unittest.TestCase):
             [1, 1, 1, 0, 2, 0, 1]]
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[1]).is_equal_to(self.player2_color)
 
+    def test_check_correct_return(self):
+        self.board.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 2, 0, 0, 0, 0, 0],
+            [0, 0, 2, 0, 0, 0, 0],
+            [0, 0, 0, 2, 0, 0, 0],
+            [1, 1, 1, 0, 2, 0, 1]]
+        assert_that(self.board.check_board(self.player1_color, self.player2_color)).is_iterable()
+
     def test_board_printing(self):
 
         assert_that(self.board.print_board()).is_same_as(True)
