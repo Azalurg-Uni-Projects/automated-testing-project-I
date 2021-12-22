@@ -205,6 +205,9 @@ class Game_test(unittest.TestCase):
         self.game.check_board()
         self.assertRaises(Exception, self.game.move_back)
 
+    def test_move_back_when_impossible(self):
+        self.assertRaises(Exception, self.game.move_back)
+
     def test_check_winner_name(self):
         self.game.board = self.winning_board
         self.game.check_board()
