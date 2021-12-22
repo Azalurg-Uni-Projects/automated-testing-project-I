@@ -1,6 +1,28 @@
 import unittest
-from assertpy import assert_that
+from assertpy import assert_that, add_extension
 from src.board import Board
+
+
+def check_board_params(self):
+    rows = self.val.rows
+    columns = self.val.columns
+    separator = self.val.separator
+    board = self.val.board
+    good_board = [[separator for i in range(columns)] for j in range(rows)]
+    if type(rows) is not int:
+        self.error("Rows wrong type")
+    elif type(columns) is not int:
+        self.error("Columns wrong type")
+    elif rows < 4:
+        self.error("Rows too small")
+    elif columns < 4:
+        self.error("Columns too small")
+    if board != good_board:
+        self.error("Wrong board")
+    return self
+
+
+add_extension(check_board_params)
 
 
 class Board_test(unittest.TestCase):
@@ -152,8 +174,10 @@ class Board_test(unittest.TestCase):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)).is_iterable()
 
     def test_board_printing(self):
-
         assert_that(self.board.print_board()).is_same_as(True)
+
+    def test_check_params(self):
+        assert_that(self.board).check_board_params()
 
     def tearDown(self):
         self.board = None
