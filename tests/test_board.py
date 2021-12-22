@@ -42,6 +42,9 @@ class Board_test(unittest.TestCase):
     def test_init_wrong_columns_val_float(self):
         self.assertRaises(ValueError, Board, 10, 11.11)
 
+    def test_init_wrong_columns_val_dic(self):
+        self.assertRaises(ValueError, Board, 10, {})
+
     def test_check_board_draw(self):
         self.game.board = [
             [1, 2, 1, 2, 1, 2, 2],
