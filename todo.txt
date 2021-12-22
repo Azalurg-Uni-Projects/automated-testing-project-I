@@ -16,17 +16,17 @@ Wymagania do tej gry są następujące:
 Pod ocenę będą brane pod uwagę następujące elementy:
 
 # (6 pkt) Uwzględnienie powyższych wymagań.
-(7 pkt) Przypadki testowe.
-(1 pkt) Użycie różnych asercji przy wykorzystaniu różnych modułów. Co najmniej 9 różnych asercji.
+# (7 pkt) Przypadki testowe.
+# (1 pkt) Użycie różnych asercji przy wykorzystaniu różnych modułów. Co najmniej 9 różnych asercji.
 # (2 pkt) Uwzględnienie wyjątków.
-(3 pkt) Zastosowanie biblioteki PyHamcrest oraz assertpy. Stosujemy każdy moduł.
-(1 pkt) Testy przy użyciu modułu PyHamcrest
-(1 pkt) Testy przy użyciu modułu assertpy
+# (3 pkt) Zastosowanie biblioteki PyHamcrest oraz assertpy. Stosujemy każdy moduł.
+# (1 pkt) Testy przy użyciu modułu PyHamcrest
+# (1 pkt) Testy przy użyciu modułu assertpy
 (1 pkt) Napisanie własnego matchera i przetestowanie go w aplikacji
 #(1 pkt) Użycie narzędzia nose
 (1 pkt) Napisanie testów za pomocą DocTest
-(2 pkt) Pokrycie kodu. Liczba punktów w zależności od otrzymanego pokrycia.
-(2 pkt) Styl kodu oraz testów.
+# (2 pkt) Pokrycie kodu. Liczba punktów w zależności od otrzymanego pokrycia.
+# (2 pkt) Styl kodu oraz testów.
 # (3 pkt) Zastosowanie metodyki TDD.
 (1 pkt) Zastosowanie testów parametrycznych (poprzez różne rodzaje)
 (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
@@ -35,7 +35,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 
 Ponadto dodatkowo pod uwagę będą brane następujące elementy:
 
-#(1 pkt) Rozszerzenie planszy na m×n
+# (1 pkt) Rozszerzenie planszy na m×n
 (1 pkt) Dodanie możliwości zapisu gry do pliku
 (1 pkt) Użycie pytest
 (2 pkt) Inne rzeczy nie pokazane na zajęciach
