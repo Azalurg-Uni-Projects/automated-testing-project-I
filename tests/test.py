@@ -115,7 +115,7 @@ class Game_test(unittest.TestCase):
             [1, 2, 1, 2, 1, 2, 1]]
         self.assertTrue(self.game.check_board())
 
-    def test_check_win_horizontal(self):
+    def test_check_win_horizontal_player1(self):
         self.game.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -123,6 +123,16 @@ class Game_test(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0],
             [2, 2, 2, 0, 0, 0, 0],
             [1, 1, 1, 1, 0, 0, 0]]
+        self.assertTrue(self.game.check_board())
+
+    def test_check_win_horizontal_player2(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [2, 2, 2, 2, 0, 0, 0],
+            [1, 1, 1, 2, 1, 1, 0]]
         self.assertTrue(self.game.check_board())
 
     def test_check_win_vertical(self):

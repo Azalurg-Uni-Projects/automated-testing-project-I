@@ -39,3 +39,5 @@ Ponadto dodatkowo pod uwagę będą brane następujące elementy:
 (1 pkt) Dodanie możliwości zapisu gry do pliku
 (1 pkt) Użycie pytest
 (2 pkt) Inne rzeczy nie pokazane na zajęciach
+
+ nose2 --with-coverage --coverage-report html
