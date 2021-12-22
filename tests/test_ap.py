@@ -1,6 +1,6 @@
 import unittest
 from assertpy import assert_that
-from src.gra import Game
+from src.game import Game
 
 
 class Game_assertpy_test(unittest.TestCase):
