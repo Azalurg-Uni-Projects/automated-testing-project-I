@@ -18,6 +18,7 @@ class Board:
         for col in self.board:
             print(col)
         print("\n")
+        return True
 
     def check_board(self, player1_color, player2_color):
         row = self.rows

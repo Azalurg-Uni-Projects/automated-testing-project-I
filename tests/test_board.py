@@ -143,7 +143,7 @@ class Board_test(unittest.TestCase):
 
     def test_board_printing(self):
 
-        assert_that(self.board.print_board()).is_not_same_as(True)
+        assert_that(self.board.print_board()).is_same_as(True)
 
     def tearDown(self):
         self.board = None
