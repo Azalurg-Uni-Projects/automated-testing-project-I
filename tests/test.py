@@ -155,7 +155,7 @@ class Game_test(unittest.TestCase):
             [1, 1, 0, 1, 2, 1, 0]]
         self.assertTrue(self.game.check_board())
 
-    def test_check_I_slope(self):
+    def test_check_I_slope1(self):
         self.game.board = [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -163,6 +163,16 @@ class Game_test(unittest.TestCase):
             [0, 0, 1, 1, 0, 0, 0],
             [0, 1, 1, 2, 0, 0, 0],
             [1, 2, 2, 2, 2, 0, 0]]
+        self.assertTrue(self.game.check_board())
+
+    def test_check_I_slope2(self):
+        self.game.board = [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 2, 0, 0, 0],
+            [0, 0, 2, 0, 0, 0, 0],
+            [0, 2, 0, 0, 0, 0, 0],
+            [2, 0, 0, 1, 1, 0, 1]]
         self.assertTrue(self.game.check_board())
 
     def test_check_II_slope(self):
