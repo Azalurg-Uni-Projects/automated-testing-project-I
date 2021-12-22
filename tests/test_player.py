@@ -10,5 +10,8 @@ class Player_test(unittest.TestCase):
     def test_instance(self):
         assert_that(self.player, instance_of(Player))
 
+    def test_equals(self):
+        assert_that(self.player.name, equal_to("Bob"))
+
     def tearDown(self):
         self.player = None
