@@ -7,14 +7,19 @@ class Board_test(unittest.TestCase):
     def setUp(self):
         self.player1_color = 1
         self.player2_color = 2
-        self.board = Board(10, 10)
-        self.empty_board = [[0 for i in range(10)] for j in range(10)]
+        self.board = Board()
 
     def test_instance(self):
         assert_that(self.board).is_instance_of(Board)
 
     def test_check_board_not_finished(self):
         assert_that(self.board.check_board(self.player1_color, self.player2_color)[0]).is_false()
+
+    def test_init_wrong_rows_val_string(self):
+        self.assertRaises(ValueError, Board, "10")
+
+    def test_init_wrong_rows_val_list(self):
+        self.assertRaises(ValueError, Board, [])
 
     def test_check_board_draw(self):
         self.game.board = [
