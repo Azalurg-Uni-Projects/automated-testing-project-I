@@ -21,6 +21,9 @@ class Board_test(unittest.TestCase):
     def test_init_wrong_rows_val_list(self):
         self.assertRaises(ValueError, Board, [])
 
+    def test_init_wrong_rows_val_float(self):
+        self.assertRaises(ValueError, Board, 11.11)
+
     def test_check_board_draw(self):
         self.game.board = [
             [1, 2, 1, 2, 1, 2, 2],
