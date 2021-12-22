@@ -39,26 +39,26 @@ class Game_test(unittest.TestCase):
 
     def test_move1(self):
         self.assertEqual(self.game.move(1), [
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [1, 0, 0, 0, 0, 0, 0]])
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0]])
 
     def test_move2(self):
         self.game.move(7)
         self.assertEqual(self.game.move(1), [
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [0, 0, 0, 0, 0, 0, 0],
-                        [2, 0, 0, 0, 0, 0, 1]])
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [2, 0, 0, 0, 0, 0, 1]])
 
     def test_move_full(self):
-        self.game.move(1)   # p1
-        self.game.move(1)   # p2
+        self.game.move(1)  # p1
+        self.game.move(1)  # p2
 
         self.game.move(1)  # p1
         self.game.move(1)  # p2
@@ -102,14 +102,27 @@ class Game_test(unittest.TestCase):
 
         self.assertEqual(self.game.board, self.empty_board)
 
+    def test_check_winning_condition_player1(self):
+        self.game.board = self.winning_board
+        self.assertTrue(self.game.check_winning_conditions())
+
+    def test_check_winning_condition_player2(self):
+        self.game.board = [[0, 0, 0, 0, 0, 0, 0],
+                           [0, 0, 0, 0, 0, 0, 0],
+                           [0, 2, 0, 0, 0, 0, 0],
+                           [0, 2, 1, 0, 0, 0, 0],
+                           [0, 2, 2, 1, 0, 0, 0],
+                           [1, 2, 1, 2, 1, 0, 0]]
+        self.assertTrue(self.game.check_winning_conditions())
+
     def test_move_after_game_end(self):
         self.game.board = self.winning_board
-        self.game.check_board()
+        self.game.check_winning_conditions()
         self.assertRaises(Exception, self.game.move, 1)
 
     def test_move_back_after_game_end(self):
         self.game.board = self.winning_board
-        self.game.check_board()
+        self.game.check_winning_conditions()
         self.assertRaises(Exception, self.game.move_back)
 
     def test_move_back_when_impossible(self):
@@ -122,12 +135,12 @@ class Game_test(unittest.TestCase):
 
     def test_check_winner_name(self):
         self.game.board = self.winning_board
-        self.game.check_board()
+        self.game.check_winning_conditions()
         self.assertEqual(self.game.winner, "Jacek")
 
     def test_check_looser_name(self):
         self.game.board = self.winning_board
-        self.game.check_board()
+        self.game.check_winning_conditions()
         self.assertEqual(self.game.looser, "Wojtas")
 
     def tearDown(self):
