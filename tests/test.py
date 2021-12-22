@@ -178,7 +178,7 @@ class Game_test(unittest.TestCase):
     def test_check_II_slope1(self):
         self.game.board = [
             [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0],
@@ -198,7 +198,7 @@ class Game_test(unittest.TestCase):
     def test_move_after_game_end(self):
         self.game.board = self.winning_board
         self.game.check_board()
-        self.assertRaises(Exception, self.game.move_back)
+        self.assertRaises(Exception, self.game.move, 1)
 
     def test_move_back_after_game_end(self):
         self.game.board = self.winning_board
