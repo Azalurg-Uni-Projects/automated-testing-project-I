@@ -23,10 +23,10 @@ class Game_test(unittest.TestCase):
             [1, 2, 1, 2, 1, 0, 0]]
 
     def test_check_init_val_player1(self):
-        self.assertEqual(self.game.player1_name, "Jacek")
+        self.assertEqual(self.game.player1.name, "Jacek")
 
     def test_check_init_val_player2(self):
-        self.assertEqual(self.game.player2_name, "Wojtas")
+        self.assertEqual(self.game.player2.color, 2)
 
     def test_change_player_success(self):
         self.game.change_player()

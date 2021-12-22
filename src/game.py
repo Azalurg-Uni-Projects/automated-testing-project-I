@@ -2,15 +2,14 @@
 import os
 import csv
 from board import Board
+from player import Player
 
 
 class Game(Board):
     def __init__(self, player1_name="player1", player2_name="player2", rows=6, columns=7):
-        self.player1_name = player1_name
-        self.player2_name = player2_name
-        self.player1_color = 1
-        self.player2_color = 2
-        self.next = self.player1_color
+        self.player1 = Player(player1_name, 1)
+        self.player2 = Player(player2_name, 2)
+        self.next = self.player1.color
         self.moves = []
         self.winner = None
         self.looser = None
@@ -19,18 +18,18 @@ class Game(Board):
         Board.__init__(self, rows, columns)
 
     def change_player(self):
-        if self.next == self.player1_color:
-            self.next = self.player2_color
+        if self.next == self.player1.color:
+            self.next = self.player2.color
         else:
-            self.next = self.player1_color
+            self.next = self.player1.color
 
     def save_result(self):
         fieldnames = ['player', 'points', "games_played", "win", "lose", "draw"]
         file_exists = os.path.exists(self.path_to_file)
         if self.winner is None:
             records = {
-                self.player1_color: {"player": self.player1_name, "points": 1, "games_played": 1, "win": 0, "lose": 0, "draw": 1},
-                self.player2_color: {"player": self.player2_name, "points": 1, "games_played": 1, "win": 0, "lose": 0, "draw": 1}}
+                self.player1.color: {"player": self.player1.name, "points": 1, "games_played": 1, "win": 0, "lose": 0, "draw": 1},
+                self.player2.color: {"player": self.player2.name, "points": 1, "games_played": 1, "win": 0, "lose": 0, "draw": 1}}
         else:
             records = {
                 self.winner: {"player": self.winner, "points": 3, "games_played": 1, "win": 1, "lose": 0,"draw": 0},
@@ -74,14 +73,14 @@ class Game(Board):
         return True
 
     def check_winning_conditions(self):
-        result = self.check_board(self.player1_color, self.player2_color)
+        result = self.check_board(self.player1.color, self.player2.color)
         if result[0]:
-            if result[1] == self.player1_color:
-                self.winner = self.player1_name
-                self.looser = self.player2_name
+            if result[1] == self.player1.color:
+                self.winner = self.player1.name
+                self.looser = self.player2.name
             else:
-                self.winner = self.player2_name
-                self.looser = self.player1_name
+                self.winner = self.player2.name
+                self.looser = self.player1.name
             self.game_end = True
             self.save_result()
             return True
