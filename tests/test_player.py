@@ -19,5 +19,8 @@ class Player_test(unittest.TestCase):
     def test_player_change_name(self):
         assert_that(self.player.change_name("Piter"), all_of(contains_string("iter"), starts_with("P")))
 
+    def test_return_player(self):
+        assert_that(self.player.return_player(), all_of(has_key("Bob"), has_value("%green%")))
+
     def tearDown(self):
         self.player = None
