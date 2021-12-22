@@ -55,7 +55,6 @@ class Game(Board):
                           "lose": int(row[4]),
                           "draw": int(row[5])}
 
-                # wyszukiwanie czy gracz nie powtarza się w tabeli wyników
                 for key, val in records.items():
                     if row[0] == key:
                         record["points"] += int(val["points"])
@@ -88,11 +87,11 @@ class Game(Board):
 
     def move(self, col):
         if self.game_end:
-            raise Exception("Koniec gry, wygrał: {}".format(self.winner))
+            raise Exception("Game ended, winner: {}".format(self.winner))
         if type(col) is not int:
-            raise ValueError("!!! BŁĘDNE DANE WEJŚCIOWE {} !!!".format(type(col)))
+            raise ValueError("!!! VALUE ERROR {} !!!".format(type(col)))
         if col not in range(1, 8):
-            raise Exception("!!! ZŁY ZAKRES !!!")
+            raise Exception("!!! WRONG PARAMETER!!!")
 
         col -= 1
         if self.board[0][col] == self.separator:
@@ -104,15 +103,15 @@ class Game(Board):
                     self.change_player()
                     break
         else:
-            raise Exception("Nie mogę wykonać ruchu, kolumna {} pełna, spróbuj ponownie.".format(col + 1))
+            raise Exception("Wrong move, column {} full, try again.".format(col + 1))
 
         return self.board
 
     def move_back(self):
         if self.game_end:
-            raise Exception("Koniec gry, wygrał: {}".format(self.winner))
+            raise Exception("Game ended, winner: {}".format(self.winner))
         if not self.moves:
-            raise Exception("Nie można cofnąć ruchu")
+            raise Exception("Move back is not possible")
 
         else:
             col = self.moves.pop()
