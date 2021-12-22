@@ -22,7 +22,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 # (3 pkt) Zastosowanie biblioteki PyHamcrest oraz assertpy. Stosujemy każdy moduł.
 # (1 pkt) Testy przy użyciu modułu PyHamcrest
 # (1 pkt) Testy przy użyciu modułu assertpy
-(1 pkt) Napisanie własnego matchera i przetestowanie go w aplikacji
+# (1 pkt) Napisanie własnego matchera i przetestowanie go w aplikacji
 #(1 pkt) Użycie narzędzia nose
 (1 pkt) Napisanie testów za pomocą DocTest
 # (2 pkt) Pokrycie kodu. Liczba punktów w zależności od otrzymanego pokrycia.

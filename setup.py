@@ -7,7 +7,7 @@ setup(
     version='2.0.0',
     author='Patryk Wawrzyniak',
     packages=find_packages(),
-    python_requires='>=3.5, <4',
+    python_requires='>=3.8, <4',
     install_requires=['nose2', 'assertpy'],
     extras_require={
         'test': ['coverage']

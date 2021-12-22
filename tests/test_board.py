@@ -1,5 +1,5 @@
 import unittest
-from assertpy import assert_that, add_extension
+from assertpy import *
 from src.board import Board
 
 

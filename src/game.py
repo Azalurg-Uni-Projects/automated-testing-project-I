@@ -1,6 +1,7 @@
 # rows = 6 columns = 7
 import os
 import csv
+import json
 from board import Board
 from player import Player
 
@@ -14,7 +15,8 @@ class Game(Board):
         self.winner = None
         self.looser = None
         self.game_end = False
-        self.path_to_file = "data/results.csv"
+        self.path_to_results = "data/results.csv"
+        self.path_to_save_game = "data/game.json"
         Board.__init__(self, rows, columns)
 
     def change_player(self):
@@ -23,9 +25,23 @@ class Game(Board):
         else:
             self.next = self.player1.color
 
+    def save_game(self):
+        current_game = {"player1": {
+            "name": self.player1.name,
+            "color": self.player1.color
+        }, "player2": {
+            "name": self.player2.name,
+            "color": self.player2.color
+        }, "board": self.board, "moves": self.moves, "game_end": self.game_end
+        }
+        json_object = json.dumps(current_game, indent=4)
+        with open(self.path_to_save_game, "w") as outfile:
+            outfile.write(json_object)
+        return True
+
     def save_result(self):
         fieldnames = ['player', 'points', "games_played", "win", "lose", "draw"]
-        file_exists = os.path.exists(self.path_to_file)
+        file_exists = os.path.exists(self.path_to_results)
         if self.winner is None:
             records = {
                 self.player1.color: {"player": self.player1.name, "points": 1, "games_played": 1, "win": 0, "lose": 0, "draw": 1},
@@ -36,11 +52,11 @@ class Game(Board):
                 self.looser: {"player": self.looser, "points": 0, "games_played": 1, "win": 0, "lose": 1,"draw": 0}}
 
         if not file_exists:
-            with open(self.path_to_file, "w", newline="") as csvfile:
+            with open(self.path_to_results, "w", newline="") as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
                 writer.writeheader()
 
-        with open(self.path_to_file, newline="") as csvfile:
+        with open(self.path_to_results, newline="") as csvfile:
             reader = csv.reader(csvfile, delimiter=";")
             try:
                 next(reader)
@@ -64,7 +80,7 @@ class Game(Board):
                         record["draw"] += val["draw"]
                 records[row[0]] = record
 
-        with open(self.path_to_file, "w", newline="") as csvfile:
+        with open(self.path_to_results, "w", newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=';')
             writer.writeheader()
             for key, value in records.items():
@@ -82,6 +98,7 @@ class Game(Board):
                 self.looser = self.player1.name
             self.game_end = True
             self.save_result()
+            self.save_game()
             return True
         return False
 
