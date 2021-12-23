@@ -11,5 +11,9 @@ class Game_test_parametric(unittest.TestCase):
     def test_move_exceptions(self, move):
         self.assertRaises(Exception, self.game.move, move)
 
+    @parameterized.expand([(1,), (2,), (3,), (4,), (5,), (6,), (7, )])
+    def test_move_correct(self, move):
+        self.assertEqual(type(self.game.move(move)), type([]))
+
     def tearDown(self):
         self.game = None
