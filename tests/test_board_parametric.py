@@ -32,5 +32,9 @@ class Board_test_parametric(unittest.TestCase):
     def test_init_board_wrong_size(self, value):
         self.assertRaises(Exception, Board, value)
 
+    @parameterized.expand(map(change_to_tuple, data["board_size_not_int"]))
+    def test_init_board_wrong_type(self, value):
+        self.assertRaises(ValueError, Board, value)
+
     def tearDown(self):
         self.board = None
