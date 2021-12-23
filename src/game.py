@@ -107,7 +107,7 @@ class Game(Board):
             raise Exception("Game ended, winner: {}".format(self.winner))
         if type(col) is not int:
             raise ValueError("!!! VALUE ERROR {} !!!".format(type(col)))
-        if col not in range(1, 8):
+        if col not in range(1, self.columns + 1):
             raise Exception("!!! WRONG PARAMETER!!!")
 
         col -= 1
