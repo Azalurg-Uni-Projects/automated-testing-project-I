@@ -29,7 +29,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 # (2 pkt) Styl kodu oraz testów.
 # (3 pkt) Zastosowanie metodyki TDD.
 # (1 pkt) Zastosowanie testów parametrycznych (poprzez różne rodzaje)
-(1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
+# (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 
 
 
