@@ -24,5 +24,9 @@ class Board_test_parametric(unittest.TestCase):
         self.board.board = board
         self.assertTrue(self.board.check_board(self.player1_color, self.player2_color)[0])
 
+    @parameterized.expand(map(change_to_tuple, data["board_size_correct"]))
+    def test_init_board_correct(self, value):
+        self.assertEqual(Board(value).rows, value)
+
     def tearDown(self):
         self.board = None
