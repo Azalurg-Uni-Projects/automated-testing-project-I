@@ -2,3 +2,6 @@ nose2
 assertpy~=1.1
 pytest~=6.2.5
 setuptools~=49.2.1
+parameterized~=0.8.1
+pyhamcrest
+coverage
