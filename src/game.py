@@ -108,11 +108,11 @@ class Game(Board):
         if type(col) is not int:
             raise ValueError("!!! VALUE ERROR {} !!!".format(type(col)))
         if col not in range(1, self.columns + 1):
-            raise Exception("!!! WRONG PARAMETER!!!")
+            raise Exception("!!! WRONG PARAMETER !!!")
 
         col -= 1
         if self.board[0][col] == self.separator:
-            for i in range(5, -1, -1):
+            for i in range(self.rows-1, -1, -1):
                 if self.board[i][col] == self.separator:
                     self.board[i][col] = self.next
                     self.moves.append(col)
